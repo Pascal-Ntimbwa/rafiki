@@ -1,0 +1,110 @@
+
+
+{% extends "commerce/layout.html" %}
+
+
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+		
+
+		{% if messages %}
+		<center>
+			{% for message in messages %}
+				<div id="message" class="container text-center">
+					<div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
+						{% if message.level == DEFAULT_MESSAGE_LEVELS.ERRORS %} Important: {% endif %}
+						{{ message }}
+						<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+					</div>
+				</div>
+			{% endfor %}
+		</center>
+		{% endif %}
+
+
+	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+      <article class="card-body">
+		<header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+
+		<form action="{% url "accounts:register" %}" method="post">
+			{% csrf_token %}
+
+			<div class="form-row">
+					<div class="col form-group">
+						<label>First name</label>
+					  	{{ form.first_name }}
+					</div> <!-- form-group end.// -->
+
+					<div class="col form-group">
+						<label>Last name</label>
+					  	{{ form.last_name }}
+					</div> <!-- form-group end.// -->
+			</div> <!-- form-row end.// -->
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Email</label>
+						{{ form.email }}
+					</div> <!-- form-group end.// -->
+
+					<div class="form-group col-md-6">
+						<label>Phone number</label>
+						{{ form.phone_number }}
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+
+				<div class="form-row">
+
+					<div class="form-group col-md-6">
+						<label>Create password</label>
+					    {{ form.password }}
+					</div> <!-- form-group end.// --> 
+
+					<div class="form-group col-md-6">
+						<label>Confirm password</label>
+					    {{ form.confirm_password }}
+					</div> <!-- form-group end.// -->  
+					{{ form.email.errors }}
+					{{ form.non_field_errors}}
+				</div>
+
+
+				{% comment %} <div class="form-row">
+					<div class="form-group col-md-6">
+					  <label>City</label>
+					  <input type="text" class="form-control">
+					</div> <!-- form-group end.// -->
+					<div class="form-group col-md-6">
+					  <label>Country</label>
+					  <select id="inputState" class="form-control">
+					    <option> Choose...</option>
+					      <option>Uzbekistan</option>
+					      <option>Russia</option>
+					      <option selected="">United States</option>
+					      <option>India</option>
+					      <option>Afganistan</option>
+					  </select>
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row.// --> {% endcomment %}
+
+			    <div class="form-group">
+			        <button type="submit" class="btn btn-success btn-block"> Register  </button>
+			    </div> <!-- form-group// -->      
+			        
+			</form>
+		</article><!-- card-body.// -->
+    </div> <!-- card .// -->
+    <p class="text-center mt-4">Have an account? <a href="{% url "accounts:login" %}">Log In</a></p>
+    <br><br>
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+{% endblock %}

@@ -1,0 +1,13 @@
+
+
+{% autoescape off %}
+
+    Hi {{ user.username }},
+
+    You have successfully registered with us.
+    Please click the link below to verify your email address and activate your account:
+    http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
+
+    If you think it's not you, please ignore this email.
+
+{% endautoescape %}

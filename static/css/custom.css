@@ -1,0 +1,78 @@
+
+/* hidding the sars*/
+.rate > input {
+    display: none;
+}
+
+.rate {
+    display: inline-block;
+    border: 0;
+}
+
+.rate > label {
+    float: right;
+}
+
+/* showing the star rating */
+.rate > label:before {
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+    padding: 0.3rem 0.2rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* half star trick */
+.rate .half:before {
+    content: "\f089";
+    position: absolute;
+    padding-right: 0;
+}
+
+/* clicked and hover star */
+input:checked ~ label, label:hover ~ label {
+    color: #FFD503;
+}
+
+/* hover heighlight previous stars in list */
+input:checked + label:hover, input:checked ~ label:hover, label:hover ~ input:checked ~ label {
+    color: #cc9000;
+}
+
+
+.rating-star > i {
+    color: #e0cc17; /* Yellow color */
+}
+
+.rating-star i.fa {
+    font-size: 15px; /* Adjust the size of the stars */
+}
+
+
+
+ul.thumb {
+    margin: 0 auto;
+    padding: 0;
+    float: left;
+}
+
+ul.thumb li {
+    list-style: none;
+    margin: 0 10px 10px 0;
+}
+
+ul.thumb li img {
+    border: 1px solid #036d64;
+    border-radius: 10px;
+    padding: 4px;
+    width: 100px;
+    height: 100px;
+
+    /* width: 80px;
+    height: 80px;
+    border: 1px solid #585757; */
+}
+
+
